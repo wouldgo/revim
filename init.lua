@@ -201,17 +201,17 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    lazy = false,
-    config = function()
-      require('onedark').setup {
-        -- Set a style preset. 'dark' is default.
-        style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
-      }
-      require('onedark').load()
-    end,
+    -- Theme inspired by dracula
+    'maxmx03/dracula.nvim',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function ()
+      local dracula = require 'dracula'
+
+      dracula.setup()
+
+      vim.cmd.colorscheme 'dracula'
+    end
   },
 
   {
@@ -283,7 +283,12 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
-}, {})
+}, {
+    install = {
+      missing = true,
+      colorscheme = {'dracula'}
+    }
+  })
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
