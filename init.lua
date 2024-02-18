@@ -331,6 +331,41 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+vim.o.errorbells = false
+vim.o.nu = true
+vim.o.guicursor = ''
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.colorcolumn = '100'
+vim.o.cmdheight = 1
+vim.o.showmode = false
+vim.o.pumheight = 10
+vim.o.conceallevel = 0
+vim.o.fileencoding = 'utf-8'
+-- vim.o.undodir = vim.fn.stdpath('config') .. '/undodir'
+vim.o.writebackup = false
+vim.o.backup = false
+vim.o.incsearch = true
+vim.o.showtabline = 0                         -- always show tabs
+vim.o.smartindent = true                      -- make indenting smarter again
+vim.o.splitbelow = true                       -- force all horizontal splits to go below current window
+vim.o.splitright = true                       -- force all vertical splits to go to the right of current window
+vim.o.swapfile = false                        -- creates a swapfile
+vim.o.cursorline = false                      -- highlight the current line
+vim.o.relativenumber = true                   -- set relative numbered lines
+vim.o.numberwidth = 2                         -- set number column width to 2 {default 4}
+vim.o.wrap = false                            -- display lines as one long line
+vim.o.scrolloff = 2                           -- ???
+vim.o.sidescrolloff = 2
+
+
+-- [[ netrw Configuration ]]
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -592,11 +627,16 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = { filetypes = {'go'} },
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  tsserver = { filetypes = { 'ts' } },
+  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  bashls = { filetypes = {'sh'} },
+  sqlls = { filetypes = {'sql'} },
+  jsonls = { filetypes = { 'json' }},
+  eslint = {filetypes = {'js'}},
+  yamlls = {filetypes = {'yaml', 'yml'}},
 
   lua_ls = {
     Lua = {
