@@ -201,16 +201,16 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by dracula
-    'maxmx03/dracula.nvim',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function ()
-      local dracula = require 'dracula'
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000 ,
+    config = function()
+      local gruvbox = require 'gruvbox'
 
-      dracula.setup()
+      gruvbox.setup()
 
-      vim.cmd.colorscheme 'dracula'
+      vim.o.background = "dark"
+      vim.cmd.colorscheme 'gruvbox'
     end
   },
 
@@ -286,7 +286,7 @@ require('lazy').setup({
 }, {
     install = {
       missing = true,
-      colorscheme = {'dracula'}
+      colorscheme = {'gruvbox'}
     }
   })
 
